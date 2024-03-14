@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter two integers separated by a space:");
+        int num1 = scanner.nextInt();
+        int num2 = scanner.nextInt();
+        System.out.println("Sum without carry: " + addWithoutCarry(num1, num2));
+        scanner.close();
+    }
+    public static int addWithoutCarry(int num1, int num2) {
+        int result = 0;
+        int multiplier = 1;
+        
+        while (num1 > 0 || num2 > 0) {
+            int digit1 = num1 % 10;
+            int digit2 = num2 % 10;
+            result += ((digit1 + digit2) % 10) * multiplier;
+            multiplier *= 10;
+            num1 /= 10;
+            num2 /= 10;
+        }
+        return result;
+    }
+}
